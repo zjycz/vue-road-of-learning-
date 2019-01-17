@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="./vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <ul>
+                <li v-for="(item,index) in list">
+                    name:{{item}} -----{{index}}
+                </li>
+            </ul>
+            <ul>
+                <li v-for="(item,index) of obj">
+                     name:{{item}} -----{{index}}
+                 </li>
+             </ul>            
+             <ul>
+                <li v-for="count of num">
+                     {{num}}
+                 </li>
+             </ul>            
+
+        </div>
+        <script>
+            var vm = new Vue({
+                el: '#app',
+                data:{
+                    list:['1','2','3','4','5','6'],
+                    obj:{
+                        id:'001',
+                        name:'klxin',
+                        des:'那个男人回来了',
+                        price:'777777777777777'
+                    },
+                    num:10
+                }
+            })
+            
+        </script>
+    </body>
+</html>

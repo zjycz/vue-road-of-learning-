@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="./vue.js"></script>
+        <style>
+            .red{
+                color: red
+            }
+            .bgc{
+                background-color: blue
+            }
+            .fsz{
+                font-size: 30px;
+            }
+            .bd{
+                border: 12px solid pink;
+            }
+            .tac{
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- <div id="box1">
+            <p>{{msg}}</p>
+            <p v-bind:title='msg1'> 鼠标悬停几秒钟查看此处动态绑定的提示信息！</p>
+        </div>
+
+        <script>
+            var vm = new Vue({
+                el: '#box1',
+                data: {
+                    msg:'这些都是小问题',
+                    msg1:'页面加载于 ' + new Date().toLocaleString()
+                }
+            })
+        </script> -->
+
+        <!-- <div v-text='msg'></div>
+        <div v-html='msg'></div>
+
+        <hr>
+
+        <div v-text='msg1'></div>
+        <div v-html='msg1'></div>      
+        <div v-show='flag'></div> -->
+        <div id="app" class="app">
+            <!-- <h2 v-bind:title='biaoti'>看看我</h2> --> 
+            <h2 :title='biaoti'>看看我</h2>
+            <h2 :data-id='aaaa'>vue绑定自定义属性</h2>
+            <!-- <button v-on:click='dianji'>点一下,玩一年</button> -->
+            <button @click='dianji'>点一下,玩一年</button> 
+            <h3 :class="['red','bgc',flag?'fsz':'bd']">这谁顶得住</h3>
+            <button @click='dianwo1'>点我 </button>
+        </div>
+
+        <script>
+            new Vue({
+                el:"#app",
+                data:{
+                    msg:'v-text',
+                    msg1:'v-html',
+                    msg2:'v-show',
+                    msg3:'{{}}',
+                    msg4:'v-on:click=dianwo', 
+                    // 第二天
+                    msg5:'v-bind',
+                    biaoti:'我是title',
+                    aaaa:"自定义id",
+                    flag:true
+                },
+                methods:{
+                    dianji(){
+                        console.log( '一刀999');                       
+                    },
+                    dianwo1(){
+                        // console.log(this.flag);
+                        this.flag=! this.flag
+                    }
+                }
+            })
+        </script>
+
+    </body>
+</html>

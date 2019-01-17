@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h2>{{str}}</h2>
+        <button @click="start">点击动</button>
+        <button @click="ds">点击ds</button>
+        <button @click="stop">点击stop</button>
+    </div>
+
+
+    <script>
+        new Vue({
+            el:"#app",
+            data:{
+                str:"小杰:'我是黑仔,我很黑,我表里如一'",
+                timeId:''
+            },
+            methods: {
+                start(){
+                    let s=this.str.substring(0,3)
+                    let e=this.str.substring(3)
+                    this.str=e+s
+                },
+                ds(){
+                    clearInterval(this.timeId)
+                    this.timeId =setInterval(() => {
+                        let s=this.str.substring(0,3)
+                        let e=this.str.substring(3)
+                        this.str=e+s
+                    },200)
+                },
+                stop(){
+                    clearInterval(this.timeId)
+                    this.timeId=null
+                }
+
+            }
+
+        })
+    
+    
+    </script>
+</body>
+</html>

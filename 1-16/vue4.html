@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id='app'>
+        <input type="text" v-model='msg'>
+        <button @click='start'>jia</button>
+        <ul>
+            <li v-for="(item,index) of list">
+                {{item}}
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        new Vue({
+            el:'#app',
+            data:{
+                msg:'我是正牌的双向绑定',
+                list:['1','2']
+            },
+            methods:{
+                start(){
+                    this.list.push(this.msg)
+                }
+            }
+        })
+    
+    </script>
+</body>
+</html>
