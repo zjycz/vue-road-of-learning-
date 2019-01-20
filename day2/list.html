@@ -59,7 +59,7 @@
         <tr v-for="item in search(keywords)" :key="item.id">
           <td>{{ item.id }}</td>
           <td v-text="item.name"></td>
-          <td>{{ item.ctime | dateFormat() }}</td>
+          <td>{{ item.ctime}}</td>
           <td>
             <a href="" @click.prevent="del(item.id)">删除</a>
           </td>
@@ -67,18 +67,12 @@
       </tbody>
     </table>
 
-
-
-  </div>
-
-  <div id="app2">
-    <h3 v-color="'pink'" v-fontweight="900" v-fontsize="50">{{ dt | dateFormat }}</h3>
   </div>
 
 
   <script>
-    new Vue({
-      el: 'app',
+   var vm = new Vue({
+      el: '#app',
       data: {
         id: '',
         name: '',
@@ -112,7 +106,7 @@
             }
           })
         }
-      },
+      }
 
 
     })
