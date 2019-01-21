@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./lib/vue-2.4.0.js"></script>
+    <style>
+        .my-enter,
+        .my-leave-to{
+            opacity: 0;
+            transform: translateX(200px)
+        }
+
+        .my-enter-active,
+        .my-leave-active{
+            transition: all 0.5s ease-in-out;
+        }
+    
+    </style>
+</head>
+<body>
+    <div id="app">
+
+        <input type="button" value="啧啧啧" @click="flag=!flag">
+        <transition name="my">
+            <h3 v-show="flag">我会动</h3>
+        </transition>
+
+    </div>
+
+
+    <script>
+        new Vue({
+            el:"#app",
+            data:{
+                flag:false
+            }
+        })
+    </script>
+
+</body>
+</html>

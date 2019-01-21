@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./lib/vue-2.4.0.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- 组件1 -->
+        <mycom1></mycom1>      
+        <!-- 组件 2 -->
+        <template id="tmpl2">
+                <h1>哈哈哈</h1>
+        </template>
+    </div>
+
+    <script>
+        var com1 = Vue.extend({
+            template:'<h3> 你在 - 干什么?</h3>'
+        })
+        
+        Vue.component('mycom1',com1)
+        
+        Vue.component('mycom2',{
+            template:"#tmp2"
+        })
+
+      let vm =  new Vue({
+            el:'#app',
+            data:{
+
+            },
+            methods:{
+
+            }
+        })
+    </script>
+</body>
+</html>
