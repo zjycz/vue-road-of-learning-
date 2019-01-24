@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./lib/vue-2.4.0.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <com1 v-bind:parentmsg="msg"></com1>
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                msg:'我把我唱给你听'
+            },
+            methods: {},
+            components: {
+                com1:{
+                    data() {
+                        return {}
+                    },
+                    template:'<h2 @click="change">这是自组件 ------fuzuj {{parentmsg}}</h2>',
+                    props:["parentmsg"],
+                    methods:{
+                        change(){
+                            this.parentmsg = '被修改了'
+                        }
+                    }
+                }
+                    
+            }
+        })
+    </script>
+</body>
+
+</html>
