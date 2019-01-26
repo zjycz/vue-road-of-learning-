@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./lib/vue-2.4.0.js"></script>
+</head>
+
+<body>
+    <div id="app">
+
+        <com2 @click="show"></com2>
+    </div>
+
+    <template id="tmp2">
+
+        <input type="button" value="点击触发func 方法" @click='myclick'>
+    </template>
+
+    <script>
+        var com2 = {
+            template:'#tmp2',
+            data(){
+                return {
+                    sonmsg:{name:'李四',age:5}
+                }
+            },
+            methods: {
+                myclick(){
+                    this.$emit('func',this.sonmsg)
+                }
+            }
+        }
+
+
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                datamsgFormSon: null
+            },
+            methods:{
+                show(data){
+                    this.datamsgFormSon=data
+                }
+            },
+            components0:{
+                com2
+            }
+        })
+    </script>
+</body>
+
+</html>
