@@ -4,8 +4,8 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 
-// import VueResource from 'vue-resource'
-// Vue.use(VueResource)
+import VueResource from 'vue-resource'
+Vue.use(VueResource)
 
 // css reset  css初始化
 import './styles/common.css'
@@ -27,5 +27,5 @@ new Vue({
   el: '#app',
   router,
   // render函数的作用是将APP组件替换掉#app盒子
-  // render: h => h(app)
+  render: h => h(App)
 })
