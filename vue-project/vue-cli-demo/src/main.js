@@ -7,6 +7,8 @@ import router from './router'
 import VueResource from 'vue-resource'
 Vue.use(VueResource)
 
+Vue.http.options.root = 'http://www.lovegf.cn:8899/api/';
+
 // css reset  css初始化
 import './styles/common.css'
 // 引入mui的css文件
@@ -21,6 +23,12 @@ import 'mint-ui/lib/style.css'
 Vue.use(MintUI)
 
 Vue.config.productionTip = false
+
+import moment from 'moment'
+
+Vue.filter('dateFormat', function(dateStr, pattern = 'YYYY-MM-DD HH:mm:ss') {
+  return moment(dateStr).format(pattern)
+})
 
 /* eslint-disable no-new */
 new Vue({
