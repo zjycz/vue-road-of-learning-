@@ -26,6 +26,7 @@ Vue.config.productionTip = false
 
 import moment from 'moment'
 
+//过滤器
 Vue.filter('dateFormat', function(dateStr, pattern = 'YYYY-MM-DD HH:mm:ss') {
   return moment(dateStr).format(pattern)
 })

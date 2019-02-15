@@ -2,9 +2,9 @@
   <div class="cmt-container">
     <h3>发表评论</h3>
     <hr>
-    <textarea placeholder="请输入zz的内容（做多吐槽120字）" maxlength="120"></textarea>
+    <textarea v-model="commentContent" placeholder="请输入zz的内容（做多吐槽120字）" maxlength="120"></textarea>
 
-    <mt-button type="primary" size="large">发表评论</mt-button>
+    <mt-button  @click="postComment" type="primary" size="large">发表评论</mt-button>
 
     <div class="cmt-list">
       <div class="cmt-item" v-for="(item, i) in comments" :key="i">
@@ -20,11 +20,14 @@
 </template>
 
 <script>
+import { Toast } from "mint-ui"
+
 export default {
     data(){
         return {
             pageindex:1,
-            comments:[]
+            comments:[],
+            commentContent:''
         }
         
     },
@@ -35,13 +38,35 @@ export default {
         getComments(){
             this.$http.get('getcomments/' + this.id + '?pageindex=' +this.pageindex)
             .then( result => {
-                this.comments = this.comments.concat(result.body.message);  
+                this.comments = this.comments.concat(result.body.message)  
             })
         },
         getMore() {
             // 加载更多
-            this.pageIndex++;
-            this.getComments();
+            this.pageIndex++
+            this.getComments()
+        },
+        postComment(){
+          if(this.commentContent.trim().length === 0)
+            return Toast("请输入评论内容")
+
+            // console.log(this.commentContent)  
+            this.$http
+              .post("postcomment/" + this.id,{content:this.commentContent})
+              .then( result => {
+                  
+                  
+                  
+                 Toast(result.body.message)
+
+                 this.comments=[]
+                 this.pageIndex=1
+                 this.getComments()
+                  // 清空评论
+                 this.commentContent = ''
+
+            })
+          
         }
     },
     props:['id']
